@@ -1,4 +1,4 @@
-import {of, interval, take, timer, range, takeWhile, filter, from, map} from "rxjs";
+import {of, interval, take, timer, range, takeWhile, filter, from} from "rxjs";
 
 function getSubscription(name: string) {
     return {
@@ -12,13 +12,6 @@ function getSubscription(name: string) {
             console.log(`${name} completed`);
         }
     };
-}
-
-function getNumber() {
-    return new Promise<number>(resolve => {
-        const randomNumber = Math.round(Math.random() * 100);
-        resolve(randomNumber);
-    });
 }
 
 const items = [
@@ -35,6 +28,4 @@ const items = [
 const itemsSet = new Set(items);
 
 from(itemsSet)
-    .pipe(
-    )
     .subscribe(getSubscription("from"))
