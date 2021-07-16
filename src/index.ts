@@ -1,5 +1,11 @@
 import {Observable, Subscriber} from "rxjs";
 
+async function delay(ms: number): Promise<void> {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+}
+
 const stream$ = new Observable((subscriber: Subscriber<number>) => {
     new Promise(async resolve => {
         for (let i = 0; i < 10; i++) {
@@ -15,12 +21,15 @@ const stream$ = new Observable((subscriber: Subscriber<number>) => {
     });
 });
 
-stream$.subscribe(data => {
-    console.log("subscribe:", data)
-})
-
-async function delay(ms: number): Promise<void> {
-    return new Promise(resolve => {
-        setTimeout(resolve, ms);
+stream$
+    .subscribe({
+        next: data => {
+            console.log("subscribe:", data)
+        },
+        error: error => {
+            throw error;
+        },
+        complete: () => {
+            console.log("Subscription completed!");
+        }
     });
-}
