@@ -1,3 +1,23 @@
-const appElement = document.querySelector("app");
+import {from, Observable, Observer, Subscriber} from "rxjs";
 
-appElement.innerHTML = "Hello World";
+const stream$ = new Observable((subscriber: Subscriber<number>) => {
+    new Promise(async resolve => {
+        for (let i = 0; i < 10; i++) {
+            await delay(500);
+            subscriber.next(i);
+        }
+        resolve(null);
+    }).then(() => {
+        console.log("All data received!");
+    });
+});
+
+stream$.subscribe(data => {
+    console.log("subscribe:", data)
+})
+
+async function delay(ms: number): Promise<void> {
+    return new Promise(resolve => {
+        setTimeout(resolve, ms);
+    });
+}
