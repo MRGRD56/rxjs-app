@@ -2,7 +2,7 @@
 Simple RxJS examples
 
 ### Launch
-Before you start the app, install Parcel CLI:  
+To run this app you must have Parcel CLI installed:  
 **npm** `npm install -g parcel-bundler`  
 **Yarn** `yarn global add parcel-bundler`
 
