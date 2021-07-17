@@ -6,7 +6,7 @@ To run this app you must have Parcel CLI installed:
 **npm** `npm install -g parcel-bundler`  
 **Yarn** `yarn global add parcel-bundler`
 
-Then, restore packages and start the app:
+Restore packages and start the app:
 
 #### npm
 `npm install`  
